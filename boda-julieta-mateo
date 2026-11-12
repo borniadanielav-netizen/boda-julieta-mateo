@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julieta & Mateo | Nuestra boda</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --burgundy: #510d20;
+  --burgundy-dark: #260710;
+  --gold: #d7b56d;
+  --gold-light: #f6e4ad;
+  --cream: #f8f0e7;
+  --black: #100b0d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+button, a {
+  font-family: inherit;
+}
+
+/* PORTADA */
+
+.opening-screen {
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at center, rgba(130, 30, 54, .55), transparent 65%),
+    linear-gradient(145deg, #16080d, #4a0b1c 55%, #10080b);
+}
+
+.opening-screen::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(215,181,109,.55);
+  pointer-events: none;
+}
+
+.opening-screen::after {
+  content: "✦";
+  position: absolute;
+  top: 12%;
+  color: var(--gold-light);
+  font-size: 18px;
+  text-shadow: 0 0 15px var(--gold);
+  animation: sparkle 3s infinite ease-in-out;
+}
+
+.opening-small {
+  color: var(--gold-light);
+  font-size: 10px;
+  letter-spacing: 4px;
+  line-height: 2;
+  margin-top: 32px;
+  max-width: 300px;
+}
+
+.opening-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 11vw, 88px);
+  color: var(--gold-light);
+  font-weight: 500;
+  margin: 18px 0 5px;
+  text-shadow: 0 0 25px rgba(215,181,109,.25);
+}
+
+.opening-title {
+  font-size: 11px;
+  letter-spacing: 7px;
+  color: #fff;
+  margin: 15px 0 35px;
+}
+
+.open-button {
+  padding: 15px 35px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold-light);
+  font-size: 10px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.open-button:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* ANILLOS DORADOS */
+
+.wedding-rings {
+  position: relative;
+  width: 180px;
+  height: 115px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,.6));
+}
+
+.ring {
+  position: absolute;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  top: 12px;
+  border: 9px solid transparent;
+  background:
+    linear-gradient(#4a0b1c, #4a0b1c) padding-box,
+    linear-gradient(135deg,
+      #fff2b8 0%,
+      #b88935 15%,
+      #fff0a5 30%,
+      #8b5a19 48%,
+      #f9df91 65%,
+      #a36d20 82%,
+      #fff0bd 100%) border-box;
+  box-shadow:
+    inset 0 0 7px rgba(255,225,145,.45),
+    0 0 10px rgba(240,190,90,.25);
+}
+
+.ring:first-child {
+  left: 38px;
+  transform: rotate(-18deg);
+  animation: ringGlow 4s infinite ease-in-out;
+}
+
+.ring:last-child {
+  left: 78px;
+  transform: rotate(18deg);
+  z-index: 2;
+  animation: ringGlow 4s infinite ease-in-out 1s;
+}
+
+@keyframes ringGlow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.5); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: .35; transform: scale(.8); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+/* CONTENIDO */
+
+#invitation {
+  display: none;
+  animation: appear 1.2s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section {
+  padding: 85px 22px;
+  text-align: center;
+  position: relative;
+}
+
+.section-burgundy {
+  background: linear-gradient(140deg, #280711, #590f25, #280711);
+}
+
+.section-black {
+  background: #100b0d;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--gold-light);
+  font-size: clamp(38px, 8vw, 58px);
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+
+.section p {
+  font-size: 12px;
+  line-height: 2.1;
+  color: #e9dfe0;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.gold-line {
+  width: 65px;
+  height: 1px;
+  background: var(--gold);
+  margin: 25px auto;
+}
+
+/* FECHA */
+
+.date-display {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--gold-light);
+  font-size: 28px;
+  margin: 20px 0;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 35px;
+}
+
+.time-box {
+  border: 1px solid rgba(215,181,109,.55);
+  padding: 17px 12px;
+  min-width: 68px;
+}
+
+.time-box strong {
+  display: block;
+  color: var(--gold-light);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.time-box span {
+  display: block;
+  color: #d8c4c6;
+  font-size: 8px;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+/* DETALLES DEL EVENTO */
+
+.detail-card {
+  max-width: 430px;
+  margin: 18px auto;
+  padding: 30px 20px;
+  border: 1px solid rgba(215,181,109,.4);
+  background: rgba(255,255,255,.025);
+}
+
+.detail-card h3 {
+  color: var(--gold-light);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+
+.detail-card p {
+  font-size: 11px;
+}
+
+.gold-button {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 13px 25px;
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
+  text-decoration: none;
+  font-size: 9px;
+  letter-spacing: 2px;
+  transition: .3s;
+}
+
+.gold-button:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* CONFIRMACION */
+
+.rsvp-box {
+  max-width: 460px;
+  margin: auto;
+  border: 1px solid rgba(215,181,109,.5);
+  padding: 35px 20px;
+}
+
+.rsvp-box p {
+  margin-bottom: 10px;
+}
+
+footer {
+  background: #10080b;
+  padding: 35px 15px;
+  text-align: center;
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px;
+}
+
+footer small {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  margin-top: 10px;
+  color: #c7aeb3;
+}
+
+/* BRILLOS */
+
+.sparkle {
+  position: absolute;
+  color: var(--gold-light);
+  font-size: 13px;
+  pointer-events: none;
+  animation: floatSparkle 4s infinite ease-in-out;
+  text-shadow: 0 0 12px var(--gold);
+}
+
+.sparkle-one { top: 25%; left: 13%; }
+.sparkle-two { top: 55%; right: 12%; animation-delay: 1s; }
+.sparkle-three { bottom: 18%; left: 25%; animation-delay: 2s; }
+
+@keyframes floatSparkle {
+  0%, 100% { opacity: .2; transform: translateY(0) scale(.8); }
+  50% { opacity: 1; transform: translateY(-12px) scale(1.3); }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 70px 18px; }
+  .opening-small { letter-spacing: 3px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PORTADA -->
+
+<header class="opening-screen" id="opening">
+  <span class="sparkle sparkle-one">✧</span>
+  <span class="sparkle sparkle-two">✦</span>
+  <span class="sparkle sparkle-three">✧</span>
+
+  <div class="wedding-rings">
+    <span class="ring"></span>
+    <span class="ring"></span>
+  </div>
+
+  <div class="opening-small">
+    TENEMOS EL HONOR DE INVITARTE A NUESTRA BODA
+  </div>
+
+  <div class="opening-name">
+    Julieta &amp; Mateo
+  </div>
+
+  <div class="opening-title">
+    ¡NOS CASAMOS!
+  </div>
+
+  <button class="open-button" onclick="openInvitation()">
+    ABRIR INVITACIÓN
+  </button>
+</header>
+
+<!-- INVITACION -->
+
+<main id="invitation">
+
+  <section class="section section-black">
+    <div class="eyebrow">UN DÍA ESPECIAL</div>
+    <h2>¡Nos casamos!</h2>
+    <div class="gold-line"></div>
+    <p>
+      Hay momentos que merecen ser compartidos
+      con las personas que queremos.
+      Nos encantaría que formes parte de este día
+      tan especial para nosotros.
+    </p>
+  </section>
+
+  <section class="section section-burgundy">
+    <div class="eyebrow">RESERVÁ LA FECHA</div>
+    <h2>Nuestra boda</h2>
+
+    <!-- REEMPLAZAR FECHA -->
+    <div class="date-display" id="weddingDateText">
+      FECHA DE LA BODA
+    </div>
+
+    <p>¡Te esperamos para celebrar juntos!</p>
+
+    <div class="countdown">
+      <div class="time-box">
+        <strong id="days">00</strong>
+        <span>DÍAS</span>
+      </div>
+      <div class="time-box">
+        <strong id="hours">00</strong>
+        <span>HORAS</span>
+      </div>
+      <div class="time-box">
+        <strong id="minutes">00</strong>
+        <span>MINUTOS</span>
+      </div>
+      <div class="time-box">
+        <strong id="seconds">00</strong>
+        <span>SEGUNDOS</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-black">
+    <div class="eyebrow">LOS ESPERAMOS</div>
+    <h2>La celebración</h2>
+
+    <div class="detail-card">
+      <h3>Ceremonia</h3>
+      <p>HORARIO A CONFIRMAR</p>
+      <p>LUGAR A CONFIRMAR</p>
+    </div>
+
+    <div class="detail-card">
+      <h3>Fiesta</h3>
+      <p>HORARIO A CONFIRMAR</p>
+      <p>SALÓN A CONFIRMAR</p>
+      <a class="gold-button" href="#" id="mapsLink" target="_blank">
+        CÓMO LLEGAR
+      </a>
+    </div>
+  </section>
+
+  <section class="section section-burgundy">
+    <div class="eyebrow">UN MOMENTO PARA RECORDAR</div>
+    <h2>Tu presencia es nuestro regalo</h2>
+    <div class="gold-line"></div>
+    <p>
+      Lo más importante para nosotros es compartir
+      esta alegría con vos.
+      ¡Gracias por acompañarnos!
+    </p>
+  </section>
+
+  <section class="section section-black">
+    <div class="eyebrow">CONFIRMÁ TU ASISTENCIA</div>
+    <h2>¿Nos acompañás?</h2>
+
+    <div class="rsvp-box">
+      <p>
+        Queremos contar con vos.
+        Confirmá tu asistencia a través de WhatsApp.
+      </p>
+
+      <a class="gold-button" id="rsvpLink" href="#" target="_blank">
+        CONFIRMAR ASISTENCIA
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    Julieta &amp; Mateo
+    <small>CON AMOR · NUESTRA BODA</small>
+  </footer>
+
+</main>
+
+<script>
+/* =================================
+   DATOS EDITABLES DE LA BODA
+================================= */
+
+// IMPORTANTE:
+// Formato de fecha: AAAA-MM-DDTHH:MM:SS
+// Cambiar por la fecha y hora reales.
+const weddingDate = "2027-12-18T20:00:00";
+
+// Texto que se muestra en la invitación.
+const weddingDateLabel = "FECHA A CONFIRMAR";
+
+// WhatsApp: código de país + número, sin + ni espacios.
+// Ejemplo Argentina: 5491123456789
+const whatsappNumber = "549";
+
+// Mensaje de confirmación.
+const whatsappMessage =
+  "¡Hola! Quiero confirmar mi asistencia a la boda de Julieta y Mateo.";
+
+// Dirección para Google Maps.
+const mapsAddress = "";
+
+/* =================================
+   ABRIR INVITACIÓN
+================================= */
+
+function openInvitation() {
+  document.getElementById("opening").style.display = "none";
+
+  const invitation = document.getElementById("invitation");
+  invitation.style.display = "block";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* =================================
+   CUENTA REGRESIVA
+================================= */
+
+document.getElementById("weddingDateText").textContent =
+  weddingDateLabel;
+
+function updateCountdown() {
+  const target = new Date(weddingDate).getTime();
+  const now = new Date().getTime();
+  const distance = target - now;
+
+  if (distance <= 0) {
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+    return;
+  }
+
+  document.getElementById("days").textContent =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  document.getElementById("hours").textContent =
+    Math.floor((distance / (1000 * 60 * 60)) % 24);
+
+  document.getElementById("minutes").textContent =
+    Math.floor((distance / (1000 * 60)) % 60);
+
+  document.getElementById("seconds").textContent =
+    Math.floor((distance / 1000) % 60);
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* =================================
+   MAPS Y CONFIRMACION
+================================= */
+
+if (mapsAddress) {
+  document.getElementById("mapsLink").href =
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(mapsAddress);
+} else {
+  document.getElementById("mapsLink").style.display = "none";
+}
+
+if (whatsappNumber !== "549") {
+  const whatsappURL =
+    "https://wa.me/" + whatsappNumber +
+    "?text=" + encodeURIComponent(whatsappMessage);
+
+  document.getElementById("rsvpLink").href = whatsappURL;
+} else {
+  document.getElementById("rsvpLink").style.display = "none";
+}
+</script>
+
+</body>
+</html>
