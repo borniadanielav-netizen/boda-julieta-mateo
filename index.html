@@ -1,821 +1,859 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Julieta & Mateo | Nuestra boda</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --burgundy: #510d20;
-  --burgundy-dark: #260710;
-  --gold: #d7b56d;
-  --gold-light: #f6e4ad;
-  --cream: #f8f0e7;
-  --black: #100b0d;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--black);
-  color: var(--cream);
-  font-family: 'Montserrat', sans-serif;
-  overflow-x: hidden;
-}
-
-/* =========================
-   PORTADA
-========================= */
-
-.opening-screen {
-  min-height: 100svh;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 40px 20px;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at center, rgba(130,30,54,.55), transparent 65%),
-    linear-gradient(145deg,#16080d,#4a0b1c 55%,#10080b);
-}
-
-.opening-screen::before {
-  content: "";
-  position: absolute;
-  inset: 18px;
-  border: 1px solid rgba(215,181,109,.55);
-  pointer-events: none;
-}
-
-.opening-screen::after {
-  content: "✦";
-  position: absolute;
-  top: 12%;
-  color: var(--gold-light);
-  font-size: 18px;
-  text-shadow: 0 0 15px var(--gold);
-  animation: sparkle 3s infinite ease-in-out;
-}
-
-.opening-small {
-  color: var(--gold-light);
-  font-size: 10px;
-  letter-spacing: 4px;
-  line-height: 2;
-  margin-top: 32px;
-  max-width: 300px;
-}
-
-.opening-name {
-  font-family: 'Cormorant Garamond',serif;
-  font-size: clamp(48px,11vw,88px);
-  color: var(--gold-light);
-  font-weight: 500;
-  margin: 18px 0 5px;
-  text-shadow: 0 0 25px rgba(215,181,109,.25);
-}
-
-.opening-title {
-  font-size: 11px;
-  letter-spacing: 7px;
-  color: white;
-  margin: 15px 0 35px;
-}
-
-.open-button {
-  padding: 15px 35px;
-  border: 1px solid var(--gold);
-  background: transparent;
-  color: var(--gold-light);
-  font-size: 10px;
-  letter-spacing: 3px;
-  cursor: pointer;
-  transition: .4s;
-  position: relative;
-  z-index: 3;
-}
-
-.open-button:hover {
-  background: var(--gold);
-  color: var(--black);
-}
-
-/* =========================
-   ANILLOS DE PORTADA
-========================= */
-
-.wedding-rings {
-  position: relative;
-  width: 180px;
-  height: 115px;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 8px 12px rgba(0,0,0,.6));
-}
-
-.ring {
-  position: absolute;
-  width: 85px;
-  height: 85px;
-  border-radius: 50%;
-  top: 12px;
-  border: 9px solid transparent;
-  background:
-    linear-gradient(#4a0b1c,#4a0b1c) padding-box,
-    linear-gradient(135deg,#fff2b8,#b88935,#fff0a5,#8b5a19,#f9df91,#a36d20,#fff0bd) border-box;
-  box-shadow:
-    inset 0 0 7px rgba(255,225,145,.45),
-    0 0 10px rgba(240,190,90,.25);
-}
-
-.ring:first-child {
-  left: 38px;
-  transform: rotate(-18deg);
-  animation: ringGlow 4s infinite ease-in-out;
-}
-
-.ring:last-child {
-  left: 78px;
-  transform: rotate(18deg);
-  z-index: 2;
-  animation: ringGlow 4s infinite ease-in-out 1s;
-}
-
-@keyframes ringGlow {
-  0%,100% { filter: brightness(1); }
-  50% { filter: brightness(1.6); }
-}
-
-@keyframes sparkle {
-  0%,100% { opacity:.35; transform:scale(.8); }
-  50% { opacity:1; transform:scale(1.4); }
-}
-
-/* =========================
-   CONTENIDO
-========================= */
-
-#invitation {
-  display: none;
-  animation: appear 1.2s ease;
-}
-
-@keyframes appear {
-  from { opacity:0; transform:translateY(20px); }
-  to { opacity:1; transform:translateY(0); }
-}
-
-.section {
-  padding: 85px 22px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.section > *:not(.floating-rings) {
-  position: relative;
-  z-index: 2;
-}
-
-.section-burgundy {
-  background: linear-gradient(140deg,#280711,#590f25,#280711);
-}
-
-.section-black {
-  background: #100b0d;
-}
-
-.eyebrow {
-  color: var(--gold);
-  font-size: 10px;
-  letter-spacing: 4px;
-  margin-bottom: 20px;
-}
-
-.section h2 {
-  font-family: 'Cormorant Garamond',serif;
-  color: var(--gold-light);
-  font-size: clamp(38px,8vw,58px);
-  font-weight: 400;
-  margin-bottom: 18px;
-}
-
-.section p {
-  font-size: 12px;
-  line-height: 2.1;
-  color: #e9dfe0;
-  max-width: 480px;
-  margin: 0 auto;
-}
-
-.gold-line {
-  width: 65px;
-  height: 1px;
-  background: var(--gold);
-  margin: 25px auto;
-}
-
-/* =========================
-   FECHA Y CUENTA REGRESIVA
-========================= */
-
-.date-display {
-  font-family: 'Cormorant Garamond',serif;
-  color: var(--gold-light);
-  font-size: clamp(22px,5vw,30px);
-  margin: 20px 0;
-}
-
-.countdown {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 35px;
-}
-
-.time-box {
-  border: 1px solid rgba(215,181,109,.55);
-  padding: 17px 12px;
-  min-width: 68px;
-}
-
-.time-box strong {
-  display: block;
-  color: var(--gold-light);
-  font-family: 'Cormorant Garamond',serif;
-  font-size: 30px;
-  font-weight: 400;
-}
-
-.time-box span {
-  display: block;
-  color: #d8c4c6;
-  font-size: 8px;
-  letter-spacing: 2px;
-  margin-top: 5px;
-}
-
-/* =========================
-   GALERÍA DE FOTOS
-========================= */
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 12px;
-  max-width: 700px;
-  margin: 35px auto 0;
-}
-
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(215,181,109,.55);
-  background: #260710;
-  aspect-ratio: 4 / 5;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .7s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.06);
-}
-
-.photo-placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  color: var(--gold-light);
-  font-size: 10px;
-  letter-spacing: 2px;
-  background: linear-gradient(145deg,#4b1021,#16080d);
-}
-
-.photo-placeholder span {
-  font-size: 30px;
-  color: var(--gold);
-}
-
-.gallery-note {
-  margin-top: 20px !important;
-  color: #d7b56d !important;
-  font-family: 'Cormorant Garamond',serif;
-  font-size: 22px !important;
-}
-
-/* =========================
-   DETALLES DEL EVENTO
-========================= */
-
-.detail-card {
-  max-width: 430px;
-  margin: 18px auto;
-  padding: 30px 20px;
-  border: 1px solid rgba(215,181,109,.4);
-  background: rgba(255,255,255,.025);
-}
-
-.detail-card h3 {
-  color: var(--gold-light);
-  font-family: 'Cormorant Garamond',serif;
-  font-size: 30px;
-  font-weight: 400;
-  margin-bottom: 12px;
-}
-
-.detail-card p {
-  font-size: 11px;
-}
-
-.gold-button {
-  display: inline-block;
-  margin-top: 22px;
-  padding: 13px 25px;
-  color: var(--gold-light);
-  border: 1px solid var(--gold);
-  text-decoration: none;
-  font-size: 9px;
-  letter-spacing: 2px;
-  transition: .3s;
-}
-
-.gold-button:hover {
-  background: var(--gold);
-  color: var(--black);
-}
-
-/* =========================
-   CONFIRMACION
-========================= */
-
-.rsvp-box {
-  max-width: 460px;
-  margin: auto;
-  border: 1px solid rgba(215,181,109,.5);
-  padding: 35px 20px;
-}
-
-.rsvp-box p {
-  margin-bottom: 10px;
-}
-
-footer {
-  background: #10080b;
-  padding: 35px 15px;
-  text-align: center;
-  color: var(--gold);
-  font-family: 'Cormorant Garamond',serif;
-  font-size: 23px;
-}
-
-footer small {
-  display: block;
-  font-family: 'Montserrat',sans-serif;
-  font-size: 8px;
-  letter-spacing: 3px;
-  margin-top: 10px;
-  color: #c7aeb3;
-}
-
-/* =========================
-   ANILLOS FLOTANTES
-========================= */
-
-.floating-rings {
-  position: absolute;
-  width: 90px;
-  height: 55px;
-  pointer-events: none;
-  opacity: .55;
-  z-index: 1;
-  animation: floatingRings 7s ease-in-out infinite;
-}
-
-.floating-rings.left {
-  left: 3%;
-  top: 18%;
-}
-
-.floating-rings.right {
-  right: 3%;
-  bottom: 15%;
-  animation-delay: 2s;
-}
-
-.floating-rings span {
-  position: absolute;
-  width: 43px;
-  height: 43px;
-  border: 5px solid transparent;
-  border-radius: 50%;
-  background:
-    linear-gradient(#350b18,#350b18) padding-box,
-    linear-gradient(135deg,#fff2b8,#a8792c,#fff0a5,#95621d,#ffe6a0) border-box;
-  box-shadow: 0 0 12px rgba(215,181,109,.5);
-}
-
-.floating-rings span:first-child {
-  left: 10px;
-  top: 5px;
-}
-
-.floating-rings span:last-child {
-  left: 34px;
-  top: 5px;
-}
-
-@keyframes floatingRings {
-  0%,100% {
-    transform: translateY(0) rotate(-8deg);
-    opacity: .3;
-  }
-  50% {
-    transform: translateY(-22px) rotate(8deg);
-    opacity: .8;
-  }
-}
-
-/* DESTELLOS */
-
-.sparkle {
-  position: absolute;
-  color: var(--gold-light);
-  font-size: 13px;
-  pointer-events: none;
-  animation: floatSparkle 4s infinite ease-in-out;
-  text-shadow: 0 0 12px var(--gold);
-  z-index: 1;
-}
-
-.sparkle-one { top:25%; left:13%; }
-.sparkle-two { top:55%; right:12%; animation-delay:1s; }
-.sparkle-three { bottom:18%; left:25%; animation-delay:2s; }
-
-@keyframes floatSparkle {
-  0%,100% { opacity:.2; transform:translateY(0) scale(.8); }
-  50% { opacity:1; transform:translateY(-12px) scale(1.3); }
-}
-
-@media(max-width:480px) {
-  .section { padding:70px 18px; }
-  .opening-small { letter-spacing:3px; }
-  .gallery { gap:8px; }
-  .floating-rings { transform:scale(.8); }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#160b10">
+  <title>Julieta & Mateo | Nuestra boda</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --wine: #541b2c;
+      --wine-dark: #210d15;
+      --black: #100b0e;
+      --gold: #d6b36a;
+      --gold-light: #fff0b8;
+      --cream: #f8f0e6;
+      --text: #f8eee6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* PORTADA */
+
+    .opening-screen {
+      min-height: 100vh;
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 30px 20px;
+      background:
+        radial-gradient(ellipse at 50% 45%, rgba(116, 37, 58, .48), transparent 55%),
+        linear-gradient(145deg, #10090d, #32101d 55%, #10090d);
+    }
+
+    .opening-screen::before,
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,230,170,.65) 1px, transparent 1.8px),
+        radial-gradient(circle, rgba(255,255,255,.35) 1px, transparent 1.8px);
+      background-size: 85px 85px, 125px 125px;
+      background-position: 0 0, 35px 45px;
+      opacity: .22;
+    }
+
+    .opening-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+      width: 100%;
+      animation: appear 1.5s ease both;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .opening-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(55px, 11vw, 100px);
+      font-weight: 400;
+      line-height: .95;
+      color: var(--cream);
+      text-shadow: 0 0 25px rgba(255, 220, 150, .18);
+    }
+
+    .opening-names span {
+      display: block;
+      color: var(--gold);
+      font-size: .55em;
+      font-style: italic;
+      margin: 12px 0;
+    }
+
+    .opening-date {
+      color: var(--gold-light);
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin: 28px 0 34px;
+    }
+
+    /* ANILLOS DE PORTADA */
+
+    .wedding-rings {
+      position: relative;
+      width: 190px;
+      height: 110px;
+      margin: 0 auto 25px;
+      filter: drop-shadow(0 0 8px rgba(255, 208, 105, .65))
+              drop-shadow(0 0 22px rgba(255, 190, 70, .38));
+      animation: ringGlow 3s ease-in-out infinite;
+    }
+
+    .wedding-rings .ring {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 7px solid transparent;
+      background:
+        linear-gradient(#24131a, #24131a) padding-box,
+        linear-gradient(135deg, #fff2bb 0%, #a87527 18%, #ffe9a0 35%, #b78331 55%, #fff0b3 75%, #94601f 100%) border-box;
+      box-shadow:
+        inset 0 0 9px rgba(255, 230, 160, .65),
+        0 0 12px rgba(255, 205, 100, .7),
+        0 0 30px rgba(255, 190, 75, .35);
+    }
+
+    .wedding-rings .ring:first-child {
+      left: 25px;
+      top: 10px;
+      transform: rotate(-18deg);
+    }
+
+    .wedding-rings .ring:last-child {
+      right: 25px;
+      top: 10px;
+      transform: rotate(18deg);
+    }
+
+    .wedding-rings::after {
+      content: "✦";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      color: #fff4c9;
+      font-size: 25px;
+      text-shadow: 0 0 8px white, 0 0 20px #ffcf69;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    .open-button {
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      background: rgba(20, 8, 13, .35);
+      padding: 15px 32px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: .35s;
+    }
+
+    .open-button:hover {
+      background: var(--gold);
+      color: var(--black);
+      box-shadow: 0 0 25px rgba(230, 190, 100, .45);
+    }
+
+    /* INVITACIÓN */
+
+    #invitation {
+      display: none;
+      animation: appear 1.2s ease both;
+    }
+
+    .section {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: 90px 22px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(90, 29, 48, .5), transparent 65%),
+        linear-gradient(160deg, #160c11, #28101b 55%, #120a0e);
+    }
+
+    .section:nth-child(even) {
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(100, 45, 53, .25), transparent 65%),
+        #100b0e;
+    }
+
+    .section-content {
+      position: relative;
+      z-index: 3;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .section-kicker {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--cream);
+      font-size: clamp(42px, 8vw, 66px);
+      font-weight: 400;
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+
+    .gold-line {
+      width: 65px;
+      height: 1px;
+      margin: 25px auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    .section p {
+      color: #e8d9d2;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 2;
+    }
+
+    .large-date {
+      color: var(--gold-light);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 7vw, 55px);
+      margin: 25px 0 10px;
+    }
+
+    /* CUENTA REGRESIVA */
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 35px auto 10px;
+    }
+
+    .countdown-item {
+      border: 1px solid rgba(214, 179, 106, .5);
+      min-width: 75px;
+      padding: 15px 10px;
+      background: rgba(0, 0, 0, .15);
+    }
+
+    .countdown-item strong {
+      display: block;
+      color: var(--gold-light);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 500;
+    }
+
+    .countdown-item span {
+      color: #d7c5b6;
+      font-size: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* GALERÍA */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+      max-width: 650px;
+      margin: 35px auto 0;
+    }
+
+    .gallery-item {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border: 1px solid rgba(214, 179, 106, .55);
+      background: #24131a;
+      box-shadow: 0 8px 25px rgba(0,0,0,.3);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .8s ease, filter .8s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.08);
+    }
+
+    /* DETALLES */
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 700px;
+      margin: 35px auto;
+    }
+
+    .detail-card {
+      border: 1px solid rgba(214, 179, 106, .5);
+      padding: 30px 18px;
+      background: rgba(0,0,0,.18);
+    }
+
+    .detail-icon {
+      color: var(--gold);
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .detail-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 29px;
+      color: var(--gold-light);
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .detail-card p {
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .gold-button {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 13px 22px;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      text-decoration: none;
+      font-size: 9px;
+      letter-spacing: 2px;
+      transition: .3s;
+    }
+
+    .gold-button:hover {
+      background: var(--gold);
+      color: var(--black);
+      box-shadow: 0 0 22px rgba(255, 207, 105, .3);
+    }
+
+    /* MENSAJE */
+
+    .quote {
+      max-width: 600px;
+      margin: auto;
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(25px, 5vw, 36px);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* CONFIRMACIÓN */
+
+    .rsvp-box {
+      max-width: 580px;
+      margin: auto;
+      padding: 35px 20px;
+      border: 1px solid rgba(214, 179, 106, .5);
+      background: rgba(0,0,0,.18);
+    }
+
+    .rsvp-box p {
+      margin-bottom: 12px;
+    }
+
+    .rsvp-button {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 15px 26px;
+      background: linear-gradient(135deg, #f4dfa0, #b8873d);
+      color: #241019;
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      transition: .3s;
+    }
+
+    .rsvp-button:hover {
+      box-shadow: 0 0 25px rgba(255, 215, 130, .55);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      padding: 50px 20px;
+      background: #0b0709;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer h2 {
+      font-size: 45px;
+      color: var(--gold);
+    }
+
+    footer p {
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: #c9b8aa;
+    }
+
+    /* ANILLOS FLOTANTES EN TODA LA INVITACIÓN */
+
+    .floating-rings {
+      position: absolute;
+      z-index: 1;
+      width: 105px;
+      height: 75px;
+      pointer-events: none;
+      opacity: .72;
+      filter:
+        drop-shadow(0 0 5px rgba(255, 221, 139, .9))
+        drop-shadow(0 0 13px rgba(255, 185, 65, .75))
+        drop-shadow(0 0 28px rgba(255, 191, 80, .4));
+      animation: floatRings 7s ease-in-out infinite, ringGlow 3s ease-in-out infinite;
+    }
+
+    .floating-rings .ring {
+      position: absolute;
+      width: 57px;
+      height: 57px;
+      border-radius: 50%;
+      border: 5px solid transparent;
+      background:
+        linear-gradient(#25131a, #25131a) padding-box,
+        linear-gradient(135deg,
+          #fff8d8 0%,
+          #d6a94d 15%,
+          #fff0a8 30%,
+          #9b6926 48%,
+          #fff3bd 65%,
+          #c18b36 82%,
+          #fff0b5 100%) border-box;
+      box-shadow:
+        inset 0 0 8px rgba(255, 239, 185, .85),
+        0 0 9px rgba(255, 211, 120, .8),
+        0 0 18px rgba(255, 192, 74, .5);
+    }
+
+    .floating-rings .ring:first-child {
+      left: 9px;
+      top: 7px;
+      transform: rotate(-18deg);
+    }
+
+    .floating-rings .ring:last-child {
+      right: 9px;
+      top: 7px;
+      transform: rotate(18deg);
+    }
+
+    .floating-rings::before {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      width: 18px;
+      height: 18px;
+      top: 3px;
+      left: 43px;
+      background: radial-gradient(circle, white 0%, #ffe9a1 25%, transparent 70%);
+      filter: blur(2px);
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    .floating-rings::after {
+      content: "✦";
+      position: absolute;
+      color: #fff4c9;
+      font-size: 17px;
+      right: 0;
+      top: -7px;
+      text-shadow: 0 0 5px white, 0 0 15px #ffcf69;
+      animation: sparkle 2.5s ease-in-out infinite .5s;
+    }
+
+    @keyframes floatRings {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+
+    @keyframes ringGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 6px rgba(255, 221, 139, .65))
+                drop-shadow(0 0 15px rgba(255, 185, 65, .4));
+      }
+      50% {
+        filter: drop-shadow(0 0 12px rgba(255, 244, 190, 1))
+                drop-shadow(0 0 28px rgba(255, 190, 65, .9))
+                drop-shadow(0 0 42px rgba(255, 190, 65, .45));
+      }
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: .4; transform: scale(.8); }
+      50% { opacity: 1; transform: scale(1.35); }
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .section {
+        padding: 72px 18px;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+      }
+
+      .gallery {
+        gap: 9px;
+      }
+
+      .countdown {
+        gap: 7px;
+      }
+
+      .countdown-item {
+        min-width: 66px;
+        padding: 12px 7px;
+      }
+
+      .countdown-item strong {
+        font-size: 29px;
+      }
+
+      .floating-rings {
+        opacity: .48;
+        transform: scale(.8);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- PORTADA -->
+  <!-- PORTADA -->
+  <section class="opening-screen" id="portada">
+    <div class="opening-content">
+      <p class="eyebrow">NOS CASAMOS</p>
 
-<header class="opening-screen" id="opening">
+      <div class="wedding-rings" aria-hidden="true">
+        <span class="ring"></span>
+        <span class="ring"></span>
+      </div>
 
-  <span class="sparkle sparkle-one">✧</span>
-  <span class="sparkle sparkle-two">✦</span>
-  <span class="sparkle sparkle-three">✧</span>
+      <h1 class="opening-names">
+        Julieta
+        <span>&</span>
+        Mateo
+      </h1>
 
-  <div class="wedding-rings">
-    <span class="ring"></span>
-    <span class="ring"></span>
-  </div>
+      <div class="gold-line"></div>
 
-  <div class="opening-small">
-    TENEMOS EL HONOR DE INVITARTE A NUESTRA BODA
-  </div>
+      <p class="opening-date">17 · 01 · 2027</p>
 
-  <div class="opening-name">
-    Julieta &amp; Mateo
-  </div>
-
-  <div class="opening-title">
-    ¡NOS CASAMOS!
-  </div>
-
-  <button class="open-button" onclick="openInvitation()">
-    ABRIR INVITACIÓN
-  </button>
-
-</header>
-
-<!-- INVITACIÓN -->
-
-<main id="invitation">
-
-  <section class="section section-black">
-    <div class="eyebrow">UN DÍA ESPECIAL</div>
-    <h2>¡Nos casamos!</h2>
-    <div class="gold-line"></div>
-
-    <p>
-      Hay momentos que merecen ser compartidos
-      con las personas que queremos.
-      Nos encantaría que formes parte de este día
-      tan especial para nosotros.
-    </p>
+      <button class="open-button" onclick="openInvitation()">
+        ABRIR INVITACIÓN
+      </button>
+    </div>
   </section>
 
-  <!-- FECHA -->
+  <!-- CONTENIDO DE LA INVITACIÓN -->
+  <main id="invitation">
 
-  <section class="section section-burgundy">
-
-    <div class="eyebrow">RESERVÁ LA FECHA</div>
-    <h2>Nuestra boda</h2>
-
-    <div class="date-display">
-      DOMINGO 17 DE ENERO DE 2027
-    </div>
-
-    <p>¡Te esperamos para celebrar juntos!</p>
-
-    <div class="countdown">
-      <div class="time-box">
-        <strong id="days">00</strong>
-        <span>DÍAS</span>
+    <!-- BIENVENIDA -->
+    <section class="section">
+      <div class="section-content">
+        <p class="section-kicker">UN DÍA PARA RECORDAR</p>
+        <h2>¡Nos casamos!</h2>
+        <div class="gold-line"></div>
+        <p>
+          Hay momentos que se vuelven inolvidables cuando se comparten
+          con las personas que queremos.
+        </p>
+        <p>
+          Queremos celebrar nuestro amor junto a ustedes.
+          ¡Nos encantaría que nos acompañen!
+        </p>
       </div>
+    </section>
 
-      <div class="time-box">
-        <strong id="hours">00</strong>
-        <span>HORAS</span>
-      </div>
+    <!-- FECHA Y CUENTA REGRESIVA -->
+    <section class="section">
+      <div class="section-content">
+        <p class="section-kicker">RESERVÁ LA FECHA</p>
+        <h2>Un día especial</h2>
+        <div class="gold-line"></div>
 
-      <div class="time-box">
-        <strong id="minutes">00</strong>
-        <span>MINUTOS</span>
-      </div>
+        <p>DOMINGO</p>
+        <div class="large-date">17 de enero de 2027</div>
+        <p>PUERTO MADERO · BUENOS AIRES</p>
 
-      <div class="time-box">
-        <strong id="seconds">00</strong>
-        <span>SEGUNDOS</span>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- GALERÍA -->
-
-  <section class="section section-black">
-
-    <div class="eyebrow">NUESTROS MOMENTOS</div>
-    <h2>Un poquito de nosotros</h2>
-    <div class="gold-line"></div>
-
-    <p>
-      Cada historia de amor está llena de momentos únicos.
-      Estos son algunos de los nuestros.
-    </p>
-
-    <div class="gallery">
-
-      <!-- REEMPLAZAR foto1.jpg POR LA FOTO REAL -->
-      <div class="gallery-item">
-        <div class="photo-placeholder">
-          <span>♡</span>
-          FOTO 1
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <strong id="days">00</strong>
+            <span>Días</span>
+          </div>
+          <div class="countdown-item">
+            <strong id="hours">00</strong>
+            <span>Horas</span>
+          </div>
+          <div class="countdown-item">
+            <strong id="minutes">00</strong>
+            <span>Minutos</span>
+          </div>
+          <div class="countdown-item">
+            <strong id="seconds">00</strong>
+            <span>Segundos</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- REEMPLAZAR foto2.jpg POR LA FOTO REAL -->
-      <div class="gallery-item">
-        <div class="photo-placeholder">
-          <span>♡</span>
-          FOTO 2
+    <!-- GALERÍA DE FOTOS -->
+    <section class="section">
+      <div class="section-content">
+        <p class="section-kicker">NUESTRA HISTORIA</p>
+        <h2>Momentos juntos</h2>
+        <div class="gold-line"></div>
+        <p>Un poquito de nuestra historia en imágenes.</p>
+
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="foto1.jpg" alt="Julieta y Mateo - Foto 1">
+          </div>
+
+          <div class="gallery-item">
+            <img src="foto2.jpg" alt="Julieta y Mateo - Foto 2">
+          </div>
+
+          <div class="gallery-item">
+            <img src="foto3.jpg" alt="Julieta y Mateo - Foto 3">
+          </div>
+
+          <div class="gallery-item">
+            <img src="foto4.jpg" alt="Julieta y Mateo - Foto 4">
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- REEMPLAZAR foto3.jpg POR LA FOTO REAL -->
-      <div class="gallery-item">
-        <div class="photo-placeholder">
-          <span>♡</span>
-          FOTO 3
+    <!-- CELEBRACIÓN -->
+    <section class="section">
+      <div class="section-content">
+        <p class="section-kicker">EL GRAN DÍA</p>
+        <h2>La celebración</h2>
+        <div class="gold-line"></div>
+
+        <div class="details-grid">
+          <div class="detail-card">
+            <div class="detail-icon">✧</div>
+            <h3>Ceremonia</h3>
+            <p>Horario a confirmar</p>
+            <p>Puerto Madero · Buenos Aires</p>
+          </div>
+
+          <div class="detail-card">
+            <div class="detail-icon">✧</div>
+            <h3>Celebración</h3>
+            <p>Horario a confirmar</p>
+            <p>Puerto Madero · Buenos Aires</p>
+          </div>
+        </div>
+
+        <p>Próximamente compartiremos todos los detalles.</p>
+
+        <a
+          class="gold-button"
+          href="https://www.google.com/maps/search/?api=1&query=Puerto+Madero+Buenos+Aires"
+          target="_blank"
+          rel="noopener noreferrer">
+          VER UBICACIÓN
+        </a>
+      </div>
+    </section>
+
+    <!-- MENSAJE -->
+    <section class="section">
+      <div class="section-content">
+        <p class="section-kicker">PARA NOSOTROS</p>
+        <div class="quote">
+          “El amor no se trata de encontrar a alguien con quien vivir,
+          sino de encontrar a alguien sin quien no puedas imaginar tu vida.”
+        </div>
+        <div class="gold-line"></div>
+        <p>Gracias por ser parte de nuestra historia.</p>
+      </div>
+    </section>
+
+    <!-- CONFIRMACIÓN -->
+    <section class="section" id="confirmar">
+      <div class="section-content">
+        <p class="section-kicker">QUEREMOS COMPARTIRLO CON VOS</p>
+        <h2>¿Nos acompañás?</h2>
+        <div class="gold-line"></div>
+
+        <div class="rsvp-box">
+          <p>Tu presencia hará que este día sea aún más especial.</p>
+          <p>Te pedimos confirmar tu asistencia.</p>
+
+          <!--
+            PARA ACTIVAR WHATSAPP:
+            Reemplazá el número de abajo por el número de los novios.
+            Usá código de país + código de área + número, sin espacios,
+            sin signos y sin el 0 inicial del código de área.
+            Ejemplo de formato argentino: 5491123456789
+          -->
+          <a
+            class="rsvp-button"
+            id="rsvpButton"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer">
+            CONFIRMAR ASISTENCIA
+          </a>
         </div>
       </div>
+    </section>
 
-      <!-- REEMPLAZAR foto4.jpg POR LA FOTO REAL -->
-      <div class="gallery-item">
-        <div class="photo-placeholder">
-          <span>♡</span>
-          FOTO 4
-        </div>
-      </div>
+    <!-- CIERRE -->
+    <footer>
+      <h2>Julieta & Mateo</h2>
+      <div class="gold-line"></div>
+      <p>17 · 01 · 2027</p>
+      <p style="margin-top: 18px;">¡LOS ESPERAMOS!</p>
+    </footer>
 
-    </div>
+  </main>
 
-    <p class="gallery-note">Julieta &amp; Mateo ♡</p>
+  <script>
+    /* ABRIR INVITACIÓN */
+    function openInvitation() {
+      document.getElementById("portada").style.display = "none";
 
-  </section>
+      const invitation = document.getElementById("invitation");
+      invitation.style.display = "block";
 
-  <!-- CELEBRACIÓN -->
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
 
-  <section class="section section-burgundy">
+      document.body.style.overflowX = "hidden";
+    }
 
-    <div class="eyebrow">LOS ESPERAMOS</div>
-    <h2>La celebración</h2>
+    /* CUENTA REGRESIVA
+       La hora está configurada provisionalmente a las 20:00.
+       Se puede cambiar cuando esté confirmado el horario.
+    */
+    const weddingDate = new Date("2027-01-17T20:00:00-03:00").getTime();
 
-    <div class="detail-card">
-      <h3>Ceremonia</h3>
-      <p>HORARIO A CONFIRMAR</p>
-      <p>PUERTO MADERO · BUENOS AIRES</p>
-    </div>
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = weddingDate - now;
 
-    <div class="detail-card">
-      <h3>Fiesta</h3>
-      <p>HORARIO A CONFIRMAR</p>
-      <p>PUERTO MADERO · BUENOS AIRES</p>
+      if (difference <= 0) {
+        document.getElementById("countdown").innerHTML =
+          "<p>¡Llegó el gran día!</p>";
+        return;
+      }
 
-      <a
-        class="gold-button"
-        href="https://www.google.com/maps/search/?api=1&query=Puerto+Madero+Buenos+Aires+Argentina"
-        target="_blank"
-        rel="noopener noreferrer">
-        CÓMO LLEGAR
-      </a>
-    </div>
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
 
-  </section>
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }
 
-  <!-- MENSAJE -->
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-  <section class="section section-black">
+    /* ANILLOS FLOTANTES EN CADA SECCIÓN */
+    document.querySelectorAll(".section").forEach((section, index) => {
+      const rings = document.createElement("div");
+      rings.className = "floating-rings";
+      rings.setAttribute("aria-hidden", "true");
 
-    <div class="eyebrow">UN MOMENTO PARA RECORDAR</div>
-    <h2>Tu presencia es nuestro regalo</h2>
-    <div class="gold-line"></div>
+      rings.innerHTML = `
+        <span class="ring"></span>
+        <span class="ring"></span>
+      `;
 
-    <p>
-      Lo más importante para nosotros es compartir
-      esta alegría con vos.
-      ¡Gracias por acompañarnos!
-    </p>
+      if (index % 2 === 0) {
+        rings.style.left = "3%";
+        rings.style.top = "18%";
+      } else {
+        rings.style.right = "3%";
+        rings.style.bottom = "15%";
+      }
 
-  </section>
-
-  <!-- RSVP -->
-
-  <section class="section section-burgundy">
-
-    <div class="eyebrow">CONFIRMÁ TU ASISTENCIA</div>
-    <h2>¿Nos acompañás?</h2>
-
-    <div class="rsvp-box">
-
-      <p>
-        Queremos contar con vos.
-        Confirmá tu asistencia a través de WhatsApp.
-      </p>
-
-      <a class="gold-button" id="rsvpLink" href="#">
-        CONFIRMAR ASISTENCIA
-      </a>
-
-    </div>
-
-  </section>
-
-  <footer>
-    Julieta &amp; Mateo
-    <small>CON AMOR · NUESTRA BODA</small>
-  </footer>
-
-</main>
-
-<script>
-
-/* =========================
-   DATOS DE LA BODA
-========================= */
-
-// 17 de enero de 2027.
-// Hora provisional: 20:00.
-const weddingDate = "2027-01-17T20:00:00";
-
-// Agregar número de WhatsApp de los novios.
-// Ejemplo Argentina: 5491123456789
-const whatsappNumber = "";
-
-// Mensaje automático.
-const whatsappMessage =
-  "¡Hola! Quiero confirmar mi asistencia a la boda de Julieta y Mateo.";
-
-/* =========================
-   ABRIR INVITACIÓN
-========================= */
-
-function openInvitation() {
-  document.getElementById("opening").style.display = "none";
-
-  const invitation = document.getElementById("invitation");
-  invitation.style.display = "block";
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-}
-
-/* =========================
-   CUENTA REGRESIVA
-========================= */
-
-function updateCountdown() {
-
-  const target = new Date(weddingDate).getTime();
-  const now = new Date().getTime();
-  const distance = target - now;
-
-  if (distance <= 0) {
-    ["days","hours","minutes","seconds"].forEach(id => {
-      document.getElementById(id).textContent = "00";
+      rings.style.animationDelay = `${index * 0.4}s`;
+      section.appendChild(rings);
     });
-    return;
-  }
 
-  document.getElementById("days").textContent =
-    Math.floor(distance / (1000 * 60 * 60 * 24));
+    /* ACTIVAR BOTÓN DE WHATSAPP CUANDO SE CARGUE EL NÚMERO */
+    const whatsappNumber = ""; // Escribí acá el número de los novios.
+    const rsvpButton = document.getElementById("rsvpButton");
 
-  document.getElementById("hours").textContent =
-    Math.floor((distance / (1000 * 60 * 60)) % 24);
+    if (whatsappNumber.trim() !== "") {
+      const message = encodeURIComponent(
+        "¡Hola! Quiero confirmar mi asistencia a la boda de Julieta y Mateo. 🤍"
+      );
 
-  document.getElementById("minutes").textContent =
-    Math.floor((distance / (1000 * 60)) % 60);
-
-  document.getElementById("seconds").textContent =
-    Math.floor((distance / 1000) % 60);
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-/* =========================
-   CONFIRMACIÓN WHATSAPP
-========================= */
-
-const rsvpLink = document.getElementById("rsvpLink");
-
-if (whatsappNumber.trim() !== "") {
-
-  const cleanNumber = whatsappNumber.replace(/\D/g, "");
-
-  rsvpLink.href =
-    "https://wa.me/" +
-    cleanNumber +
-    "?text=" +
-    encodeURIComponent(whatsappMessage);
-
-} else {
-  rsvpLink.style.display = "none";
-}
-
-/* =========================
-   ANILLOS EN TODAS LAS SECCIONES
-========================= */
-
-document.querySelectorAll(".section").forEach((section,index) => {
-
-  const leftRings = document.createElement("div");
-  leftRings.className = "floating-rings left";
-  leftRings.innerHTML = "<span></span><span></span>";
-
-  const rightRings = document.createElement("div");
-  rightRings.className = "floating-rings right";
-  rightRings.innerHTML = "<span></span><span></span>";
-
-  leftRings.style.animationDelay = `${index * 0.7}s`;
-  rightRings.style.animationDelay = `${index * 1.2}s`;
-
-  section.appendChild(leftRings);
-  section.appendChild(rightRings);
-
-});
-
-</script>
+      rsvpButton.href =
+        `https://wa.me/${whatsappNumber}?text=${message}`;
+    } else {
+      rsvpButton.style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
