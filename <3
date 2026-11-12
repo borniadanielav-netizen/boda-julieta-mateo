@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,10 +35,6 @@ body {
   color: var(--cream);
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
-}
-
-button, a {
-  font-family: inherit;
 }
 
 /* PORTADA */
@@ -266,7 +263,7 @@ button, a {
   margin-top: 5px;
 }
 
-/* DETALLES DEL EVENTO */
+/* DETALLES */
 
 .detail-card {
   max-width: 430px;
@@ -368,6 +365,7 @@ footer small {
 <!-- PORTADA -->
 
 <header class="opening-screen" id="opening">
+
   <span class="sparkle sparkle-one">✧</span>
   <span class="sparkle sparkle-two">✦</span>
   <span class="sparkle sparkle-three">✧</span>
@@ -392,6 +390,7 @@ footer small {
   <button class="open-button" onclick="openInvitation()">
     ABRIR INVITACIÓN
   </button>
+
 </header>
 
 <!-- INVITACION -->
@@ -402,6 +401,7 @@ footer small {
     <div class="eyebrow">UN DÍA ESPECIAL</div>
     <h2>¡Nos casamos!</h2>
     <div class="gold-line"></div>
+
     <p>
       Hay momentos que merecen ser compartidos
       con las personas que queremos.
@@ -411,12 +411,12 @@ footer small {
   </section>
 
   <section class="section section-burgundy">
+
     <div class="eyebrow">RESERVÁ LA FECHA</div>
     <h2>Nuestra boda</h2>
 
-    <!-- REEMPLAZAR FECHA -->
-    <div class="date-display" id="weddingDateText">
-      FECHA DE LA BODA
+    <div class="date-display">
+      DOMINGO 17 DE ENERO DE 2027
     </div>
 
     <p>¡Te esperamos para celebrar juntos!</p>
@@ -426,53 +426,68 @@ footer small {
         <strong id="days">00</strong>
         <span>DÍAS</span>
       </div>
+
       <div class="time-box">
         <strong id="hours">00</strong>
         <span>HORAS</span>
       </div>
+
       <div class="time-box">
         <strong id="minutes">00</strong>
         <span>MINUTOS</span>
       </div>
+
       <div class="time-box">
         <strong id="seconds">00</strong>
         <span>SEGUNDOS</span>
       </div>
     </div>
+
   </section>
 
   <section class="section section-black">
+
     <div class="eyebrow">LOS ESPERAMOS</div>
     <h2>La celebración</h2>
 
     <div class="detail-card">
       <h3>Ceremonia</h3>
       <p>HORARIO A CONFIRMAR</p>
-      <p>LUGAR A CONFIRMAR</p>
+      <p>PUERTO MADERO · BUENOS AIRES</p>
     </div>
 
     <div class="detail-card">
       <h3>Fiesta</h3>
       <p>HORARIO A CONFIRMAR</p>
-      <p>SALÓN A CONFIRMAR</p>
-      <a class="gold-button" href="#" id="mapsLink" target="_blank">
+      <p>PUERTO MADERO · BUENOS AIRES</p>
+
+      <a
+        class="gold-button"
+        href="https://www.google.com/maps/search/?api=1&query=Puerto+Madero+Buenos+Aires+Argentina"
+        target="_blank"
+        rel="noopener noreferrer">
         CÓMO LLEGAR
       </a>
     </div>
+
   </section>
 
   <section class="section section-burgundy">
+
     <div class="eyebrow">UN MOMENTO PARA RECORDAR</div>
     <h2>Tu presencia es nuestro regalo</h2>
     <div class="gold-line"></div>
+
     <p>
       Lo más importante para nosotros es compartir
       esta alegría con vos.
       ¡Gracias por acompañarnos!
     </p>
+
   </section>
 
   <section class="section section-black">
+
     <div class="eyebrow">CONFIRMÁ TU ASISTENCIA</div>
     <h2>¿Nos acompañás?</h2>
 
@@ -482,10 +497,11 @@ footer small {
         Confirmá tu asistencia a través de WhatsApp.
       </p>
 
-      <a class="gold-button" id="rsvpLink" href="#" target="_blank">
+      <a class="gold-button" id="rsvpLink" href="#">
         CONFIRMAR ASISTENCIA
       </a>
     </div>
+
   </section>
 
   <footer>
@@ -496,28 +512,24 @@ footer small {
 </main>
 
 <script>
+
 /* =================================
-   DATOS EDITABLES DE LA BODA
+   DATOS DE LA BODA
 ================================= */
 
-// IMPORTANTE:
-// Formato de fecha: AAAA-MM-DDTHH:MM:SS
-// Cambiar por la fecha y hora reales.
-const weddingDate = "2027-12-18T20:00:00";
+// Fecha: 17 de enero de 2027
+// Hora de referencia: 20:00 hs.
+// Se puede modificar cuando confirmen el horario.
+const weddingDate = "2027-01-17T20:00:00";
 
-// Texto que se muestra en la invitación.
-const weddingDateLabel = "FECHA A CONFIRMAR";
-
-// WhatsApp: código de país + número, sin + ni espacios.
+// Número de WhatsApp de los novios.
+// Reemplazar por el número real con código de país.
 // Ejemplo Argentina: 5491123456789
-const whatsappNumber = "549";
+const whatsappNumber = "";
 
-// Mensaje de confirmación.
+// Mensaje automático de confirmación
 const whatsappMessage =
   "¡Hola! Quiero confirmar mi asistencia a la boda de Julieta y Mateo.";
-
-// Dirección para Google Maps.
-const mapsAddress = "";
 
 /* =================================
    ABRIR INVITACIÓN
@@ -529,17 +541,18 @@ function openInvitation() {
   const invitation = document.getElementById("invitation");
   invitation.style.display = "block";
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 
 /* =================================
    CUENTA REGRESIVA
 ================================= */
 
-document.getElementById("weddingDateText").textContent =
-  weddingDateLabel;
-
 function updateCountdown() {
+
   const target = new Date(weddingDate).getTime();
   const now = new Date().getTime();
   const distance = target - now;
@@ -552,43 +565,53 @@ function updateCountdown() {
     return;
   }
 
-  document.getElementById("days").textContent =
-    Math.floor(distance / (1000 * 60 * 60 * 24));
+  const days = Math.floor(
+    distance / (1000 * 60 * 60 * 24)
+  );
 
-  document.getElementById("hours").textContent =
-    Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const hours = Math.floor(
+    (distance / (1000 * 60 * 60)) % 24
+  );
 
-  document.getElementById("minutes").textContent =
-    Math.floor((distance / (1000 * 60)) % 60);
+  const minutes = Math.floor(
+    (distance / (1000 * 60)) % 60
+  );
 
-  document.getElementById("seconds").textContent =
-    Math.floor((distance / 1000) % 60);
+  const seconds = Math.floor(
+    (distance / 1000) % 60
+  );
+
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
 }
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
 /* =================================
-   MAPS Y CONFIRMACION
+   CONFIRMACION POR WHATSAPP
 ================================= */
 
-if (mapsAddress) {
-  document.getElementById("mapsLink").href =
-    "https://www.google.com/maps/search/?api=1&query=" +
-    encodeURIComponent(mapsAddress);
+const rsvpLink = document.getElementById("rsvpLink");
+
+if (whatsappNumber.trim() !== "") {
+
+  const cleanNumber = whatsappNumber.replace(/\D/g, "");
+
+  rsvpLink.href =
+    "https://wa.me/" +
+    cleanNumber +
+    "?text=" +
+    encodeURIComponent(whatsappMessage);
+
 } else {
-  document.getElementById("mapsLink").style.display = "none";
+
+  rsvpLink.style.display = "none";
+
 }
 
-if (whatsappNumber !== "549") {
-  const whatsappURL =
-    "https://wa.me/" + whatsappNumber +
-    "?text=" + encodeURIComponent(whatsappMessage);
-
-  document.getElementById("rsvpLink").href = whatsappURL;
-} else {
-  document.getElementById("rsvpLink").style.display = "none";
-}
 </script>
 
 </body>
